@@ -1,11 +1,9 @@
 ## Minimal Pdf viewer with split screen with React and Electron. 
 <br>
-<br>
 
 ![Example](example.png)
 In browser example.
 
-<br>
 <br>
 
 ### Available Scripts.
@@ -15,7 +13,6 @@ In the project directory, you can run:
 ### `yarn run electron-dev`
 ### `yarn run electron-pack`
 
-<br>
 <br>
 
 ### Work In Progress.
