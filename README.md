@@ -1,21 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Minimal Pdf viewer with split screen with React and Electron. 
+<br>
+<br>
 
-## Available Scripts
+![Example](example.png)
+In browser example.
 
+<br>
+<br>
+
+### Available Scripts.
 In the project directory, you can run:
 
 ### `yarn run start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
 ### `yarn run electron-dev`
-
-Launches the react app in an electron container.<br>
-
 ### `yarn run electron-pack`
 
-Packs the app with electron-pack for production to the `build` folder.<br>
+<br>
+<br>
+
+### Work In Progress.
+More Features and Performance Optimizations to Come.<br>
+
+* Fix page height scaling
+* Render page view **only** after drag finished
+* Add page number counter
+* Jump to page
+* Split page to current page 
+* Split layout saving (Optional)
+* Sidebar for outline (Optional)
+

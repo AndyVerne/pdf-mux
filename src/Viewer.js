@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SplitPane from 'react-split-pane'
-import PdfViewer from './PdfViewer2';
+import PdfViewer from './PdfViewer';
 import _ from 'lodash'
 
 class Viewer extends Component {
