@@ -18,11 +18,11 @@ In the project directory, you can run:
 ### Work In Progress.
 More Features and Performance Optimizations to Come.<br>
 
-* Fix page height scaling
-* Render page view **only** after drag finished
-* Add page number counter
-* Jump to page
-* Split page to current page 
-* Split layout saving (Optional)
-* Sidebar for outline (Optional)
+- [x] Fix page height scaling
+- [ ] Render page view **only** after drag finished
+- [ ] Add page number counter
+- [ ] Jump to page
+- [ ] Split page to current page 
+- [ ] Split layout saving (Optional)
+- [ ] Sidebar for outline (Optional)
 

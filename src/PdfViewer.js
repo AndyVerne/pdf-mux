@@ -1,4 +1,4 @@
-import { VariableSizeList as List } from 'react-window'
+import { FixedSizeList as List } from 'react-window'
 import React, { Component } from 'react';
 import { pdfjs, Document, Page } from 'react-pdf';
 import Measure from 'react-measure'
@@ -20,19 +20,23 @@ export default class PdfViewer extends Component {
             numPages: null,
             width: 0,
             height: 0,
+            itemScale: 0,
+            loaded: false
         }
     }
 
 
   onDocumentLoadSuccess = (pdf) => {
-    this.setState({ 
-        numPages: pdf.numPages,
-        pdf: pdf,
-    },
-        console.log(this.props)
-    );
+    const promise = pdf.getPage(1)
+    promise.then(page => {
+        const viewport = page.getViewport(1);
+        this.setState({ 
+            numPages: pdf.numPages,
+            itemScale: viewport.height/viewport.width,
+            loaded: true,
+        });
+    })
   }
-
 
   render() {
     return (
@@ -59,23 +63,25 @@ export default class PdfViewer extends Component {
             noData=""
             loading=""
           >
-            <List
-                height={this.state.height}
-                width={this.state.width}
-                itemSize={() => 840}
-                itemCount={this.state.numPages}
-            >
-                {({ style, index }) => (
-                    <div style={style}>
-                        <Page
-                            pageNumber={index + 1}
-                            width={this.state.width}
-                            renderAnnotationLayer={false}
-                            loading=""
-                        ></Page>
-                    </div>
-                )}
-            </List>
+            {this.state.loaded ? 
+                <List
+                    height={this.state.height}
+                    width={this.state.width}
+                    itemSize={this.state.itemScale * this.state.width}
+                    itemCount={this.state.numPages}
+                >
+                    {({ style, index }) => (
+                        <div style={style}>
+                            <Page
+                                pageNumber={index + 1}
+                                width={this.state.width}
+                                renderAnnotationLayer={false}
+                                loading=""
+                            ></Page>
+                        </div>
+                    )}
+                </List>:
+            null}
           </Document>
         </div>
         </div>
