@@ -1,23 +1,28 @@
-## Minimal Pdf viewer with split screen with React and Electron. 
-<br>
-
+## PDF-MUX. 
 ![Example](example.png)
 In browser example.
 
 <br>
 
-### Available Scripts.
-In the project directory, you can run:
+### A minimal PDF reader with split screen views.
+Inspired by tmux and built using cross-platform web technology,
+this project aims to make make your document content be at the
+forefront.
 
-### `yarn run start`
-### `yarn run electron-dev`
-### `yarn run electron-pack`
+<br>
+
+### Installation.
+Install dependencies
+`yarn install`<br>
+Run in browerser
+`yarn run start`<br>
+Build executable
+`yarn run electron-pack`
 
 <br>
 
 ### Work In Progress.
-More Features and Performance Optimizations to Come.<br>
-
+This is an early concept prototype. More features and optimizations will be added.<br>
 - [x] Fix page height scaling
 - [ ] Render page view **only** after drag finished
 - [ ] Add page number counter
