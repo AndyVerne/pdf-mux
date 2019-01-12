@@ -109,7 +109,8 @@ class Viewer extends Component {
               />
               <label htmlFor={id}></label>
               <div style={{marginLeft: "auto", width: "100px", textAlign: "center", color: "gray"}}>
-                ({this.state.currentPage}/{this.state.numPages})
+                <input type="text" style={{width: "15%"}} placeholder={this.state.currentPage}></input>
+                ( {this.state.currentPage} of {this.state.numPages} )
               </div>
             </div>
             <PdfViewer 
