@@ -17,32 +17,41 @@ export default class PdfViewer extends Component {
 
         this.state = {
             pdf: null,
-            numPages: null,
             width: 0,
             height: 0,
             itemScale: 0,
             loaded: false,
+            numPages: null,
             currentPage: 1,
         }
     }
 
-    updateCurrentVisiblePage = ({ visibleStopIndex }) => {
-        this.state.currentPage = visibleStopIndex + 1
-        console.log(this.state.currentPage)
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.props.file !== nextProps.file || this.state.loaded === false) {
+            this.state.loaded = false
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    onDocumentLoadSuccess = (pdf) => {
+        const promise = pdf.getPage(1)
+        promise.then(page => {
+            const viewport = page.getViewport(1);
+            this.props.getNumPages(pdf.numPages)
+            this.setState({ 
+                numPages: pdf.numPages,
+                itemScale: viewport.height/viewport.width,
+                loaded: true,
+            });
+        })
+    }
 
-  onDocumentLoadSuccess = (pdf) => {
-    const promise = pdf.getPage(1)
-    promise.then(page => {
-        const viewport = page.getViewport(1);
-        this.setState({ 
-            numPages: pdf.numPages,
-            itemScale: viewport.height/viewport.width,
-            loaded: true,
-        });
-    })
-  }
+    updateCurrentVisiblePage = ({ visibleStopIndex }) => {
+        this.state.currentPage = visibleStopIndex + 1
+        this.props.getCurrentPage(this.state.currentPage)
+    }
 
   render() {
     return (
@@ -76,6 +85,7 @@ export default class PdfViewer extends Component {
                     itemSize={this.state.itemScale * this.state.width}
                     itemCount={this.state.numPages}
                     onItemsRendered={this.updateCurrentVisiblePage}
+                    overscanCount={2}
                 >
                     {({ style, index }) => (
                         <div style={style} key={index}>

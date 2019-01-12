@@ -15,6 +15,8 @@ class Viewer extends Component {
       close: 0,
       lr: "",
       file: null,
+      numPages: 0,
+      currentPage: 0,
     };
   }
 
@@ -74,6 +76,20 @@ class Viewer extends Component {
     });
   }
 
+  getNumPages = (numPages) => {
+    this.setState({
+      numPages
+    })
+  }
+
+  getCurrentPage = (currentPage) => {
+    if (currentPage !== this.state.currentPage) {
+      this.setState({
+        currentPage
+      })
+    }
+  }
+
   render() {
     const id = _.uniqueId();
     return (
@@ -92,10 +108,14 @@ class Viewer extends Component {
                 id={id}
               />
               <label htmlFor={id}></label>
-              <div style={{marginLeft: "auto", width: "70px", textAlign: "center", color: "gray"}}>12</div>
+              <div style={{marginLeft: "auto", width: "70px", textAlign: "center", color: "gray"}}>
+                ({this.state.currentPage}/{this.state.numPages})
+              </div>
             </div>
             <PdfViewer 
               file={this.state.file}
+              getNumPages={this.getNumPages}
+              getCurrentPage={this.getCurrentPage}
             ></PdfViewer>
           </div>:
           <SplitPane 
