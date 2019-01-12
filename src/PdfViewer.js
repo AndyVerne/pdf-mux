@@ -21,8 +21,14 @@ export default class PdfViewer extends Component {
             width: 0,
             height: 0,
             itemScale: 0,
-            loaded: false
+            loaded: false,
+            currentPage: 1,
         }
+    }
+
+    updateCurrentVisiblePage = ({ visibleStopIndex }) => {
+        this.state.currentPage = visibleStopIndex + 1
+        console.log(this.state.currentPage)
     }
 
 
@@ -69,9 +75,10 @@ export default class PdfViewer extends Component {
                     width={this.state.width}
                     itemSize={this.state.itemScale * this.state.width}
                     itemCount={this.state.numPages}
+                    onItemsRendered={this.updateCurrentVisiblePage}
                 >
                     {({ style, index }) => (
-                        <div style={style}>
+                        <div style={style} key={index}>
                             <Page
                                 pageNumber={index + 1}
                                 width={this.state.width}
