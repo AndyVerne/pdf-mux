@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SplitPane from "react-split-pane";
 import PdfViewer from "./PdfViewer";
+import Beforeunload from "react-beforeunload";
 import _ from "lodash";
 
 class Viewer extends Component {
@@ -8,26 +9,53 @@ class Viewer extends Component {
     super(props);
 
     this.state = {
+      //split states
       split: "",
       size: "50%",
       resizerStyle: "",
       allowResize: true,
       close: 0,
       lr: "",
+      //file states
       file: null,
-      numPages: 0,
+      value: "none",
       currentPage: 0,
+      numPages: 0,
       page: "",
       setPage: null
     };
+    this.localStorage = window.localStorage;
   }
 
-  componentWillMount = () => {
-    if (this.props.file !== null) {
-      this.setState(() => ({
-        file: this.props.file
-      }));
+  componentCleanup = () => {
+    this.localStorage.setItem(this.state.value, this.state.currentPage.toString());
+    console.log("cached");
+  };
+
+  onFileChange = event => {
+    this.componentCleanup();
+    const file = event.target.files[0];
+    if (file !== null) {
+      const value = event.target.value;
+      const currentPage = parseInt(this.localStorage.getItem(value));
+      this.setState({
+        file,
+        value,
+        currentPage: isNaN(currentPage) ? 1 : currentPage
+      });
     }
+  };
+
+  componentWillMount = () => {
+    this.setState(() => ({
+      file: this.props.file !== null ? this.props.file : null,
+      value: this.props.value !== "none" ? this.props.value : "none",
+      currentPage: this.props.currentPage !== 0 ? this.props.currentPage : 0
+    }));
+  };
+
+  componentWillUnmount = () => {
+    this.componentCleanup();
   };
 
   vSplit = () => {
@@ -72,12 +100,6 @@ class Viewer extends Component {
     }));
   };
 
-  onFileChange = event => {
-    this.setState({
-      file: event.target.files[0]
-    });
-  };
-
   getNumPages = numPages => {
     this.setState({
       numPages
@@ -97,7 +119,6 @@ class Viewer extends Component {
       const page = parseInt(this.state.page);
       if (page !== NaN && page > 0 && page <= this.state.numPages) {
         this.state.setPage(page);
-        console.log(page);
       }
       this.setState({
         page: ""
@@ -113,6 +134,11 @@ class Viewer extends Component {
     const id = _.uniqueId();
     return (
       <div>
+        <Beforeunload
+          onBeforeunload={() => {
+            this.componentCleanup();
+          }}
+        />
         {this.state.split === "" ? (
           <div>
             <div
@@ -145,7 +171,7 @@ class Viewer extends Component {
                 >
                   <input
                     type="text"
-                    style={{ width: "20px" }}
+                    style={{ width: "30px" }}
                     value={this.state.page}
                     placeholder={this.state.currentPage}
                     onChange={e => this.setState({ page: e.target.value })}
@@ -157,6 +183,7 @@ class Viewer extends Component {
             </div>
             <PdfViewer
               file={this.state.file}
+              currentPage={this.state.currentPage}
               getNumPages={this.getNumPages}
               getCurrentPage={this.getCurrentPage}
               setPage={this.setPage}
@@ -182,6 +209,8 @@ class Viewer extends Component {
                   close={this.lClose}
                   handle={this.rClose}
                   file={this.state.file}
+                  value={this.state.value}
+                  currentPage={this.state.currentPage}
                 />
               </div>
             )}
@@ -192,6 +221,8 @@ class Viewer extends Component {
                 close={this.rClose}
                 handle={this.lClose}
                 file={this.state.file}
+                value={this.state.value}
+                currentPage={this.state.currentPage}
               />
             )}
           </SplitPane>

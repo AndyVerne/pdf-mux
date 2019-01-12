@@ -21,12 +21,13 @@ export default class PdfViewer extends Component {
       itemScale: 0,
       loaded: false,
       numPages: null,
-      currentPage: 1
+      currentPage: 0
     };
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.file !== nextProps.file || this.state.loaded === false) {
+      this.state.currentPage = 0;
       this.state.loaded = false;
       return true;
     } else {
@@ -50,14 +51,22 @@ export default class PdfViewer extends Component {
   };
 
   updateCurrentVisiblePage = ({ visibleStopIndex }) => {
-    this.state.currentPage = visibleStopIndex + 1;
-    this.props.getCurrentPage(this.state.currentPage);
+    if (this.state.loaded === true && this.state.currentPage !== 0) {
+      this.state.currentPage = visibleStopIndex + 1;
+      this.props.getCurrentPage(this.state.currentPage);
+    }
   };
 
   setPage = page => {
     this.state.currentPage = page;
     this.props.getCurrentPage(this.state.currentPage);
-    this.listRef.current.scrollToItem(page - 1);
+    this.listRef.current.scrollToItem(page - 1, "start");
+  };
+
+  componentDidUpdate = () => {
+    if (this.state.loaded === true && this.state.currentPage === 0) {
+      this.setPage(this.props.currentPage);
+    }
   };
 
   render() {
@@ -92,13 +101,13 @@ export default class PdfViewer extends Component {
               >
                 {this.state.loaded ? (
                   <List
+                    ref={this.listRef}
                     height={this.state.height}
                     width={this.state.width}
                     itemSize={this.state.itemScale * this.state.width}
                     itemCount={this.state.numPages}
                     onItemsRendered={this.updateCurrentVisiblePage}
-                    overscanCount={2}
-                    ref={this.listRef}
+                    overscanCount={1}
                   >
                     {({ style, index }) => (
                       <div style={style} key={index}>

@@ -10,6 +10,7 @@
     "mousetrap": "^1.6.2",
     "pdfjs-dist": "^2.0.943",
     "react": "^16.7.0",
+    "react-beforeunload": "^1.0.4",
     "react-dom": "^16.7.0",
     "react-measure": "^2.2.2",
     "react-mousetrap": "^0.2.0",

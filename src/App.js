@@ -36,8 +36,9 @@ class App extends Component {
           <Viewer
             handle={this.handle}
             height={this.state.height}
-            pageIndex={0}
             file={null}
+            value={"none"}
+            currentPage={0}
           />
         )}
       </div>

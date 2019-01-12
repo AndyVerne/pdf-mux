@@ -8493,6 +8493,13 @@ react-app-polyfill@^0.2.0:
     raf "3.4.0"
     whatwg-fetch "3.0.0"
 
+react-beforeunload@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-beforeunload/-/react-beforeunload-1.0.4.tgz#8aff97c23a735d3a1bbcb7a6727e5db779a117c8"
+  integrity sha512-t9FddoC2ynnvx6BB4wZguzC+frwxP6zeaT0ZC4Bf2viMbxLsW45ntKBPczcmCyUV03+PSES1sQpLBdGg9Qc2AA==
+  dependencies:
+    prop-types "^15.5.10"
+
 react-dev-utils@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-7.0.1.tgz#c53e759a22668ee2c0d146c24ce4bdec2b41e3c8"
