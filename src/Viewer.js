@@ -97,7 +97,7 @@ class Viewer extends Component {
         {this.state.split === "" ? 
           <div>
             <div style={{width: "100%", background: "white", display: "flex", justifyContent: "center"}}>
-              <button style={{ marginRight: "auto"}}></button>
+              <button style={{ marginRight: "auto", marginLeft: "20px"}}></button>
               <button onClick={this.vSplit}></button>
               <button onClick={this.hSplit}></button>
               <button onClick={this.props.close}></button>
@@ -108,9 +108,11 @@ class Viewer extends Component {
                 id={id}
               />
               <label htmlFor={id}></label>
-              <div style={{marginLeft: "auto", width: "100px", textAlign: "center", color: "gray"}}>
-                <input type="text" style={{width: "15%"}} placeholder={this.state.currentPage}></input>
+              <div style={{marginLeft: "auto"}}>
+              <div style={{marginRight: "20px", display: "inline-block", textAlign: "right", color: "gray"}}>
+                <input type="text" style={{width: "20px"}} placeholder={this.state.currentPage}></input>
                 ( {this.state.currentPage} of {this.state.numPages} )
+              </div>
               </div>
             </div>
             <PdfViewer 
