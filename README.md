@@ -24,10 +24,12 @@ Build executable
 ### Work In Progress.
 This is an early concept prototype. More features and optimizations will be added.<br>
 - [x] Fix page height scaling
-- [ ] Render page view **only** after drag finished
-- [ ] Add page number counter
-- [ ] Jump to page
-- [ ] Split page to current page 
-- [ ] Split layout saving (Optional)
-- [ ] Sidebar for outline (Optional)
+- [ ] Render page view **after** drag finished
+- [x] Page number counter
+- [x] Jump to page
+- [ ] Split page to current
+- [ ] Layout saving 
+- [ ] Sidebar 
+- [ ] Link jumping
+- [ ] Page saving
 

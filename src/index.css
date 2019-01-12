@@ -55,7 +55,7 @@ label:focus {
   outline: 0;
 }
 
-input[type=text] {
+input[type="text"] {
   border: 0;
   border-bottom: 1px gainsboro solid;
   color: gray;
