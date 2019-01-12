@@ -27,9 +27,9 @@ This is an early concept prototype. More features and optimizations will be adde
 - [ ] Render page view **after** drag finished
 - [x] Page number counter
 - [x] Jump to page
-- [ ] Split page to current
+- [x] Split page to current
 - [ ] Layout saving 
 - [ ] Sidebar 
 - [ ] Link jumping
-- [ ] Page saving
+- [x] Session saving
 
