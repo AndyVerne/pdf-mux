@@ -108,7 +108,7 @@ class Viewer extends Component {
                 id={id}
               />
               <label htmlFor={id}></label>
-              <div style={{marginLeft: "auto", width: "70px", textAlign: "center", color: "gray"}}>
+              <div style={{marginLeft: "auto", width: "100px", textAlign: "center", color: "gray"}}>
                 ({this.state.currentPage}/{this.state.numPages})
               </div>
             </div>
