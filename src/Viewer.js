@@ -80,17 +80,19 @@ class Viewer extends Component {
         <div>
         {this.state.split === "" ? 
           <div>
-            <div style={{background: "white", textAlign: "center"}}>
-              <button onClick={this.vSplit} style={{background: "gainsboro"}}></button>
-              <button onClick={this.hSplit} style={{background: "#gainsboro"}}></button>
-              <button onClick={this.props.close} style={{background: "gainsboro"}}></button>
+            <div style={{width: "100%", background: "white", display: "flex", justifyContent: "center"}}>
+              <button style={{ marginRight: "auto"}}></button>
+              <button onClick={this.vSplit}></button>
+              <button onClick={this.hSplit}></button>
+              <button onClick={this.props.close}></button>
               <input
                 type="file"
                 onChange={this.onFileChange}
                 style={{display: "none"}}
                 id={id}
               />
-              <label htmlFor={id} style={{background: "gainsboro"}}></label>
+              <label htmlFor={id}></label>
+              <div style={{marginLeft: "auto", width: "70px", textAlign: "center", color: "gray"}}>12</div>
             </div>
             <PdfViewer 
               file={this.state.file}
