@@ -113,7 +113,7 @@ export default class PdfViewer extends Component {
                       <div style={style} key={index}>
                         <Page
                           pageNumber={index + 1}
-                          width={this.state.width}
+                          width={this.state.width - 10}
                           renderAnnotationLayer={false}
                           loading=""
                         />
