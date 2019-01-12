@@ -16,7 +16,7 @@
 }
 
 .Resizer.horizontal {
-  height: 11px;
+  height: 4px;
   margin: -5px 0;
   border-top: 5px solid rgba(255, 255, 255, 0);
   border-bottom: 5px solid rgba(255, 255, 255, 0);
@@ -30,7 +30,7 @@
 }
 
 .Resizer.vertical {
-  width: 11px;
+  width: 4px;
   margin: 0 -5px;
   border-left: 5px solid rgba(255, 255, 255, 0);
   border-right: 5px solid rgba(255, 255, 255, 0);
@@ -44,4 +44,24 @@
 
 .Resizer.disabled:hover {
   border-color: transparent;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f5f5f5; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: gainsboro; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: gray; 
 }

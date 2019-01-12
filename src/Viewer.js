@@ -144,12 +144,12 @@ class Viewer extends Component {
             <div
               style={{
                 width: "100%",
-                background: "white",
+                background: "#white",
                 display: "flex",
                 justifyContent: "center"
               }}
             >
-              <button style={{ marginRight: "auto", marginLeft: "20px" }} />
+              <button style={{ marginRight: "auto", marginLeft: "20px", visibility: "hidden" }} />
               <button onClick={this.vSplit} />
               <button onClick={this.hSplit} />
               <button onClick={this.props.close} />
@@ -164,9 +164,9 @@ class Viewer extends Component {
                 <div
                   style={{
                     marginRight: "20px",
-                    display: "inline-block",
                     textAlign: "right",
-                    color: "gray"
+                    color: "gray",
+                    fontSize: "14px"
                   }}
                 >
                   <input
@@ -177,7 +177,7 @@ class Viewer extends Component {
                     onChange={e => this.setState({ page: e.target.value })}
                     onKeyDown={this.getPage}
                   />
-                  ( {this.state.currentPage} of {this.state.numPages} )
+                  ({this.state.currentPage} of {this.state.numPages})
                 </div>
               </div>
             </div>
