@@ -17,7 +17,6 @@ http://ianzen.github.io/pdf-mux
 <br>
 
 ## Dev Installation.
-### Feel free to tinker with source code.
 
 Install dependencies
 `yarn install`<br>
