@@ -22,8 +22,9 @@ class Viewer extends Component {
       currentPage: 0,
       numPages: 0,
       page: "",
-      setPage: null
     };
+    this.setPage = null
+    this.stack = []
     this.localStorage = window.localStorage;
   }
 
@@ -119,7 +120,7 @@ class Viewer extends Component {
     if (event.keyCode === 13) {
       const page = parseInt(this.state.page);
       if (page !== NaN && page > 0 && page <= this.state.numPages) {
-        this.state.setPage(page);
+        this.setPage(page);
       }
       this.setState({
         page: ""
@@ -127,11 +128,21 @@ class Viewer extends Component {
     }
   };
 
-  setPage = setPage => {
-    this.setState({
-      setPage 
-    })
+  getSetPage = setPage => {
+    this.setPage = setPage
   };
+
+  pushStack = (currentPage) => {
+    this.stack.push(currentPage);
+    console.log(this.stack)
+  };
+
+  goBack = () => {
+    if (this.stack.length > 0) {
+      const page = this.stack.pop()
+      this.setPage(page)
+    }
+  }
 
   render() {
     const id = _.uniqueId();
@@ -152,7 +163,7 @@ class Viewer extends Component {
                 justifyContent: "center"
               }}
             >
-              <button style={{ marginRight: "auto", marginLeft: "20px", visibility: "hidden" }} />
+              <button style={{ marginRight: "auto", marginLeft: "20px"}} onClick={this.goBack}/>
               <button onClick={this.vSplit} />
               <button onClick={this.hSplit} />
               <button onClick={this.props.close} />
@@ -189,7 +200,8 @@ class Viewer extends Component {
               currentPage={this.state.currentPage}
               getNumPages={this.getNumPages}
               getCurrentPage={this.getCurrentPage}
-              setPage={this.setPage}
+              getSetPage={this.getSetPage}
+              pushStack={this.pushStack}
             />
           </div>
         ) : (

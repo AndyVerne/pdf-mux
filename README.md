@@ -30,6 +30,6 @@ This is an early concept prototype. More features and optimizations will be adde
 - [x] Split page to current
 - [ ] Layout saving 
 - [ ] Sidebar 
-- [ ] Link jumping
+- [x] Link jump (forward + backward)
 - [x] Session saving
 

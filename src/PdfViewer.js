@@ -40,7 +40,7 @@ export default class PdfViewer extends Component {
     promise.then(page => {
       const viewport = page.getViewport(1);
       this.props.getNumPages(pdf.numPages);
-      this.props.setPage(this.setPage);
+      this.props.getSetPage(this.setPage);
       this.listRef = React.createRef();
       this.setState({
         pdf,
@@ -75,6 +75,11 @@ export default class PdfViewer extends Component {
     console.log('unmout pdf')
   }
 
+  onItemClick = ({pageNumber}) => {
+    this.props.pushStack(this.state.currentPage);
+    this.setPage(pageNumber);
+  }
+
   render() {
     return (
       <Measure
@@ -101,6 +106,7 @@ export default class PdfViewer extends Component {
               <Document
                 file={this.props.file}
                 onLoadSuccess={this.onDocumentLoadSuccess}
+                onItemClick={this.onItemClick}
                 options={options}
                 noData=""
                 loading=""
@@ -119,8 +125,8 @@ export default class PdfViewer extends Component {
                       <div style={style} key={index}>
                         <Page
                           pageNumber={index + 1}
-                          width={this.state.width - 10}
-                          renderAnnotationLayer={false}
+                          width={this.state.width - 20}
+                          renderAnnotationLayer={true}
                           loading=""
                         />
                       </div>
