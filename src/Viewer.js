@@ -27,13 +27,13 @@ class Viewer extends Component {
     this.localStorage = window.localStorage;
   }
 
-  componentCleanup = () => {
+  cachePage = () => {
     this.localStorage.setItem(this.state.value, this.state.currentPage.toString());
     console.log("cached");
   };
 
   onFileChange = event => {
-    this.componentCleanup();
+    this.cachePage();
     const file = event.target.files[0];
     if (file !== null) {
       const value = event.target.value;
@@ -55,7 +55,8 @@ class Viewer extends Component {
   };
 
   componentWillUnmount = () => {
-    this.componentCleanup();
+    this.cachePage();
+    console.log('unmount viewer')
   };
 
   vSplit = () => {
@@ -126,8 +127,10 @@ class Viewer extends Component {
     }
   };
 
-  setPage = sP => {
-    this.state.setPage = sP;
+  setPage = setPage => {
+    this.setState({
+      setPage 
+    })
   };
 
   render() {
@@ -136,7 +139,7 @@ class Viewer extends Component {
       <div>
         <Beforeunload
           onBeforeunload={() => {
-            this.componentCleanup();
+            this.cachePage();
           }}
         />
         {this.state.split === "" ? (

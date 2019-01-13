@@ -43,6 +43,7 @@ export default class PdfViewer extends Component {
       this.props.setPage(this.setPage);
       this.listRef = React.createRef();
       this.setState({
+        pdf,
         numPages: pdf.numPages,
         itemScale: viewport.height / viewport.width,
         loaded: true
@@ -68,6 +69,11 @@ export default class PdfViewer extends Component {
       this.setPage(this.props.currentPage);
     }
   };
+
+  componentWillUnmount = () => {
+    this.state.pdf.destroy()
+    console.log('unmout pdf')
+  }
 
   render() {
     return (
