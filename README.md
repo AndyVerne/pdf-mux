@@ -9,10 +9,18 @@ Inspired by tmux and built using cross-platform web technology,
 this project aims to make make your document content be at the
 forefront. 
 
-<br>
 
-## Try in Browser.
-http://ianzen.github.io/pdf-mux
+## Try in Your Browser.
+
+React web-app: http://ianzen.github.io/pdf-mux
+
+### Controls (from left to right):
+* Back
+* Vertical Split
+* Horizontal Split
+* Close File
+* Open File
+
 
 <br>
 
