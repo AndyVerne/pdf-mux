@@ -21,11 +21,22 @@ React web-app: http://ianzen.github.io/pdf-mux
 * Close File
 * Open File
 
+### Features:
+Vertical Split.<br>
+![vertical](vertical.png)
+Horizontal Split.<br>
+![horizontal](horizontal.png)
+Nested Split.<br>
+![nested](nested.png)
+Links.
+![links](links.png)
 
 <br>
 
 ## Dev Installation.
 
+Clone repository
+`git clone https://github.com/ianzen/pdf-mux.git`<br>
 Install dependencies
 `yarn install`<br>
 Run in browerser
