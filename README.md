@@ -6,7 +6,7 @@ In browser example.
 
 ## A minimal PDF reader with split screen views.
 Inspired by tmux and built using cross-platform web technology,
-this project aims to make make your document content be at the
+this project aims to make make your content be at the
 forefront. 
 
 
