@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/pdf-mux/precache-manifest.768b178b31308185877bca6606633289.js"
+  "/pdf-mux/precache-manifest.f754af5e365756f641a2c0abe0aea850.js"
 );
 
 workbox.clientsClaim();
