@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import {findDOMNode} from "react-dom"
 import SplitPane from "react-split-pane";
 import PdfViewer from "./PdfViewer";
 import Beforeunload from "react-beforeunload";
+import ReactTooltip from "react-tooltip"
 import _ from "lodash";
 
 class Viewer extends Component {
@@ -163,17 +165,53 @@ class Viewer extends Component {
                 justifyContent: "center"
               }}
             >
-              <button style={{ marginRight: "auto", marginLeft: "20px"}} onClick={this.goBack}/>
-              <button onClick={this.vSplit} />
-              <button onClick={this.hSplit} />
-              <button onClick={this.props.close} />
+              <button 
+                ref="back"
+                style={{ marginRight: "auto", marginLeft: "20px"}} 
+                onClick={() => {
+                  this.goBack(); 
+                  ReactTooltip.hide(findDOMNode(this.refs.back));
+                }}
+                data-tip="Back"
+              />
+              <button 
+                ref="vSplit"
+                onClick={() => {
+                  this.vSplit();
+                  ReactTooltip.hide(findDOMNode(this.refs.vSplit));
+                }}
+                data-tip="Split Vertical"
+              />
+              <button 
+                ref="hSplit"
+                onClick={() => {
+                  this.hSplit();
+                  ReactTooltip.hide(findDOMNode(this.refs.hSplit));
+                }}
+                data-tip="Split Horizontal"
+              />
+              <button 
+                ref="close"
+                onClick={() => {
+                  this.props.close();
+                  ReactTooltip.hide(findDOMNode(this.refs.close));
+                }}
+                data-tip="Close Pane"
+              />
               <input
                 type="file"
                 onChange={this.onFileChange}
                 style={{ display: "none" }}
                 id={id}
               />
-              <label htmlFor={id} />
+              <label 
+                ref="open"
+                htmlFor={id} 
+                onClick={() => {
+                  ReactTooltip.hide(findDOMNode(this.refs.open));
+                }}
+                data-tip="Open File"
+              />
               <div style={{ marginLeft: "auto" }}>
                 <div
                   style={{
@@ -188,12 +226,14 @@ class Viewer extends Component {
                     style={{ width: "30px" }}
                     value={this.state.page}
                     placeholder={this.state.currentPage}
+                    data-tip="Go to Page"
                     onChange={e => this.setState({ page: e.target.value })}
                     onKeyDown={this.getPage}
                   />
                   ({this.state.currentPage} of {this.state.numPages})
                 </div>
               </div>
+              <ReactTooltip place="bottom" effect="solid" />
             </div>
             <PdfViewer
               file={this.state.file}

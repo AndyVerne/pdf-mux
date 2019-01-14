@@ -17,6 +17,7 @@
     "react-pdf": "^4.0.2",
     "react-scripts": "2.1.3",
     "react-split-pane": "^0.1.85",
+    "react-tooltip": "^3.9.2",
     "react-window": "^1.5.0"
   },
   "scripts": {

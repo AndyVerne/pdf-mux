@@ -15,7 +15,7 @@ class App extends Component {
       <div>
         {this.state.close ? null : (
           <Viewer
-            handle={() => {}}
+            close={() => {}}
             file={null}
             value={"none"}
             currentPage={0}

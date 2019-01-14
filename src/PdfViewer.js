@@ -59,9 +59,11 @@ export default class PdfViewer extends Component {
   };
 
   setPage = page => {
-    this.state.currentPage = page;
-    this.props.getCurrentPage(this.state.currentPage);
-    this.listRef.current.scrollToItem(page - 1, "start");
+    if (page !== 0) {
+      this.state.currentPage = page;
+      this.props.getCurrentPage(this.state.currentPage);
+      this.listRef.current.scrollToItem(page - 1, "start");
+    }
   };
 
   componentDidUpdate = () => {
@@ -71,7 +73,9 @@ export default class PdfViewer extends Component {
   };
 
   componentWillUnmount = () => {
-    this.state.pdf.destroy()
+    if (this.state.pdf !== null) {
+      this.state.pdf.destroy()
+    }
     console.log('unmout pdf')
   }
 
