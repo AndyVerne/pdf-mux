@@ -1,15 +1,15 @@
 {
-  "main.css": "/pdf-mux/static/css/main.ddeff7c1.chunk.css",
-  "main.js": "/pdf-mux/static/js/main.8eead281.chunk.js",
-  "main.js.map": "/pdf-mux/static/js/main.8eead281.chunk.js.map",
-  "static/css/1.a7d3e82a.chunk.css": "/pdf-mux/static/css/1.a7d3e82a.chunk.css",
-  "static/js/1.bbeab21a.chunk.js": "/pdf-mux/static/js/1.bbeab21a.chunk.js",
-  "static/js/1.bbeab21a.chunk.js.map": "/pdf-mux/static/js/1.bbeab21a.chunk.js.map",
-  "runtime~main.js": "/pdf-mux/static/js/runtime~main.2850d99e.js",
-  "runtime~main.js.map": "/pdf-mux/static/js/runtime~main.2850d99e.js.map",
-  "static/css/main.ddeff7c1.chunk.css.map": "/pdf-mux/static/css/main.ddeff7c1.chunk.css.map",
-  "static/css/1.a7d3e82a.chunk.css.map": "/pdf-mux/static/css/1.a7d3e82a.chunk.css.map",
-  "index.html": "/pdf-mux/index.html",
-  "precache-manifest.f754af5e365756f641a2c0abe0aea850.js": "/pdf-mux/precache-manifest.f754af5e365756f641a2c0abe0aea850.js",
-  "service-worker.js": "/pdf-mux/service-worker.js"
+  "main.css": "./static/css/main.ddeff7c1.chunk.css",
+  "main.js": "./static/js/main.f598f62e.chunk.js",
+  "main.js.map": "./static/js/main.f598f62e.chunk.js.map",
+  "static/css/1.a7d3e82a.chunk.css": "./static/css/1.a7d3e82a.chunk.css",
+  "static/js/1.bbeab21a.chunk.js": "./static/js/1.bbeab21a.chunk.js",
+  "static/js/1.bbeab21a.chunk.js.map": "./static/js/1.bbeab21a.chunk.js.map",
+  "runtime~main.js": "./static/js/runtime~main.4a686d48.js",
+  "runtime~main.js.map": "./static/js/runtime~main.4a686d48.js.map",
+  "static/css/main.ddeff7c1.chunk.css.map": "./static/css/main.ddeff7c1.chunk.css.map",
+  "static/css/1.a7d3e82a.chunk.css.map": "./static/css/1.a7d3e82a.chunk.css.map",
+  "index.html": "./index.html",
+  "precache-manifest.c22ce2cd0ab9d96d781d9fb3885cbf58.js": "./precache-manifest.c22ce2cd0ab9d96d781d9fb3885cbf58.js",
+  "service-worker.js": "./service-worker.js"
 }
