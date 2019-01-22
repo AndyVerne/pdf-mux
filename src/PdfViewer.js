@@ -37,6 +37,10 @@ export default class PdfViewer extends Component {
 
   onDocumentLoadSuccess = pdf => {
     const promise = pdf.getPage(1);
+    if (this.state.pdf !== null) {
+      this.state.pdf.destroy();
+      this.state.pdf=null;
+    }
     promise.then(page => {
       const viewport = page.getViewport(1);
       this.props.getNumPages(pdf.numPages);
@@ -74,7 +78,11 @@ export default class PdfViewer extends Component {
 
   componentWillUnmount = () => {
     if (this.state.pdf !== null) {
-      this.state.pdf.destroy()
+      this.state.pdf.destroy();
+      this.state.pdf=null;
+      this.setState({
+        loaded: false
+      });
     }
     console.log('unmout pdf')
   }

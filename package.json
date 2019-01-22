@@ -2,7 +2,7 @@
   "name": "pdf-mux",
   "version": "0.1.1",
   "main": "public/main.js",
-  "homepage": "http://ianzen.github.io/pdf-mux",
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "electron-is-dev": "^1.0.1",

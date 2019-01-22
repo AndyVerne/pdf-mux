@@ -57,21 +57,33 @@ class Viewer extends Component {
     }));
   };
 
+  cleanUp = () => {
+    this.setPage=null;
+    this.state.file=null;
+  }
+
   componentWillUnmount = () => {
     this.cachePage();
+    this.cleanUp();
     console.log('unmount viewer')
   };
 
   vSplit = () => {
     this.setState(() => ({
       split: "vertical"
-    }));
+    }),
+    () => {
+      this.cleanUp();
+    });
   };
 
   hSplit = () => {
     this.setState(() => ({
       split: "horizontal"
-    }));
+    }),
+    () => {
+      this.cleanUp();
+    });
   };
 
   lClose = () => {
